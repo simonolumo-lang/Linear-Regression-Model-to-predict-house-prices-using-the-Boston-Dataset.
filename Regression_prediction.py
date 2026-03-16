@@ -16,8 +16,7 @@ with open("linear_regression_model.pkl", "rb") as file:
 # Page settings
 # -------------------------------------------------
 st.set_page_config(
-    page_title="Boston Housing Price Prediction System",
-    layout="centered"
+    page_title="House Price Prediction System",    layout="centered"
 )
 
 # -------------------------------------------------
@@ -44,14 +43,14 @@ trained on the *Boston Housing dataset*.
 # -------------------------------------------------
 st.header("Enter House Feature Values")
 
-CRIM = st.number_input("CRIM - Per capita crime rate by town", min_value=0.0, value=0.10)
-ZN = st.number_input("ZN - Proportion of residential land zoned for large lots", min_value=0.0, value=0.0)
-INDUS = st.number_input("INDUS - Proportion of non-retail business acres per town", min_value=0.0, value=8.0)
+CRIM = st.number_input("CRIM - Per capita crime rate by town", min_value=0.0, value=0.10, format ="%.5f")
+ZN = st.number_input("ZN - Proportion of residential land zoned for large lots", min_value=0.0, value=0.0, format ="%.2f")
+INDUS = st.number_input("INDUS - Proportion of non-retail business acres per town", min_value=0.0, value=8.0, format ="%.3f")
 CHAS = st.selectbox("CHAS - Charles River dummy variable", [0, 1])
-NOX = st.number_input("NOX - Nitric oxide concentration", min_value=0.0, value=0.50)
-RM = st.number_input("RM - Average number of rooms per dwelling", min_value=0.0, value=6.0)
-AGE = st.number_input("AGE - Proportion of owner-occupied units built before 1940", min_value=0.0, value=65.0)
-DIS = st.number_input("DIS - Weighted distances to employment centres", min_value=0.0, value=4.0)
+NOX = st.number_input("NOX - Nitric oxide concentration", min_value=0.0, value=0.50, format ="%.5f")
+RM = st.number_input("RM - Average number of rooms per dwelling", min_value=0.0, value=6.0, format ="%.4f")
+AGE = st.number_input("AGE - Proportion of owner-occupied units built before 1940", min_value=0.0, value=65.0, format ="%.2f")
+DIS = st.number_input("DIS - Weighted distances to employment centres", min_value=0.0, value=4.0, format ="%.4f")
 RAD = st.number_input("RAD - Index of accessibility to radial highways", min_value=0.0, value=4.0)
 TAX = st.number_input("TAX - Full-value property tax rate per $10,000", min_value=0.0, value=300.0)
 PTRATIO = st.number_input("PTRATIO - Pupil-teacher ratio by town", min_value=0.0, value=18.0)
@@ -71,7 +70,7 @@ if st.button("Predict"):
 
     prediction = model.predict(input_data)
 
-    st.success(f"Predicted House Price: {prediction[0]:.5f}")
+    st.success(f"Predicted House Price: {prediction[0]:.2f}")
 
 # -------------------------------------------------
 # Model Use Cases
